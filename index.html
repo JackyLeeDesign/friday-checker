@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Is it Friday?</title>
+    <style>
+      body {
+        font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+        background-color: #282c34;
+        color: #61dafb;
+        text-align: center;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        transition: background-color 1s;
+      }
+
+      h1 {
+        font-size: 3rem;
+        margin-bottom: 20px;
+      }
+
+      #answer {
+        font-size: 5rem;
+        animation-duration: 1s;
+      }
+
+      #answer {
+        font-size: 5rem;
+        animation-duration: 1s;
+        animation-timing-function: ease-in-out; /* add this line */
+        animation-play-state: running; /* add this line */
+      }
+
+      @keyframes nod {
+        0%,
+        100% {
+          transform: translateY(0);
+        }
+        50% {
+          transform: translateY(-20px);
+        }
+      }
+
+      @keyframes shakeHead {
+        0%,
+        100% {
+          transform: translateX(0);
+        }
+        25%,
+        75% {
+          transform: translateX(-20px);
+        }
+        50% {
+          transform: translateX(20px);
+        }
+      }
+    </style>
+  </head>
+
+  <body>
+    <div>
+      <h1>Is it Friday?</h1>
+      <div id="answer"></div>
+    </div>
+
+    <script>
+      function isItFriday() {
+        const today = new Date().getDay();
+        const answerElement = document.getElementById("answer");
+
+        if (today === 5) {
+          document.body.style.backgroundColor = "#66BB6A"; // A softer green
+          answerElement.textContent = "Yes!";
+          answerElement.style.animationName = "nod";
+          answerElement.style.animationIterationCount = "infinite";
+        } else {
+          document.body.style.backgroundColor = "#EF9A9A"; // A softer red
+          answerElement.textContent = "Nope.";
+          answerElement.style.animationName = "shakeHead";
+          answerElement.style.animationIterationCount = "infinite";
+        }
+      }
+
+      // Call the function when the page loads
+      isItFriday();
+    </script>
+  </body>
+</html>
